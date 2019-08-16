@@ -24,6 +24,9 @@
             </e>
           </e>
         </e>
+        <e p="out" t="Include">
+          <e p="PredicateExtensionsCore.1.0.0.nupkg" t="Include" />
+        </e>
       </e>
       <e p="PredicateExtensions.UnitTests" t="IncludeRecursive">
         <e p="PredicateExtensionTests.cs" t="Include" />
