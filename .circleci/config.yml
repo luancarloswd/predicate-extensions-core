@@ -10,4 +10,4 @@ jobs:
       - run: dotnet build
       - run: dotnet test --no-build
       - run: dotnet pack -o out/
-      - run: dotnet nuget push out/PredicateExtensionsCore.1.0.0.nupkg -k $NUGET_TOKEN -s https://api.nuget.org/v3/index.json
+      - run: dotnet nuget push PredicateExtensions/out/PredicateExtensionsCore.1.0.0.nupkg -k $NUGET_TOKEN -s https://api.nuget.org/v3/index.json
