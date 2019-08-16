@@ -26,14 +26,8 @@
         </e>
       </e>
       <e p="PredicateExtensions.UnitTests" t="IncludeRecursive">
-        <e p="EfExtensionTests.cs" t="Include" />
+        <e p="PredicateExtensionTests.cs" t="Include" />
         <e p="PredicateExtensions.UnitTests.csproj" t="IncludeRecursive" />
-        <e p="Resources" t="Include">
-          <e p="Blog.cs" t="Include" />
-          <e p="BlogStub.cs" t="Include" />
-          <e p="BloggingContext.cs" t="Include" />
-          <e p="Posnt.cs" t="Include" />
-        </e>
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
