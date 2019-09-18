@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 using FluentAssertions;
 using Xunit;
 
-namespace PredicateExtensions.UnitTests
+namespace PredicateExtensions.Core.UnitTests
 {
     /* 
      * Data is not needed for these tests, we only need to see if the expression trees are formed correctly

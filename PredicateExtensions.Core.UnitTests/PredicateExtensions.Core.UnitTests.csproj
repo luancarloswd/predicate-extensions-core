@@ -4,6 +4,8 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <RootNamespace>PredicateExtensions.Core.UnitTests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PredicateExtensions\PredicateExtensions.csproj" />
+    <ProjectReference Include="..\PredicateExtensions.Core\PredicateExtensions.Core.csproj" />
   </ItemGroup>
 
 </Project>

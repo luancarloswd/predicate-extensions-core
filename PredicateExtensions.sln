@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PredicateExtensions", "PredicateExtensions\PredicateExtensions.csproj", "{58238DFF-6212-43CF-92AF-3853E19AF4F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PredicateExtensions.Core", "PredicateExtensions.Core\PredicateExtensions.Core.csproj", "{58238DFF-6212-43CF-92AF-3853E19AF4F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PredicateExtensions.UnitTests", "PredicateExtensions.UnitTests\PredicateExtensions.UnitTests.csproj", "{2BD61F8D-5265-40C3-AE22-A2055D74B26D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PredicateExtensions.Core.UnitTests", "PredicateExtensions.Core.UnitTests\PredicateExtensions.Core.UnitTests.csproj", "{2BD61F8D-5265-40C3-AE22-A2055D74B26D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

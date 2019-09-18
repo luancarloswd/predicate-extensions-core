@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
-using PredicateExtensions.Assets;
+using PredicateExtensions.Core.Assets;
 
-namespace PredicateExtensions
+namespace PredicateExtensions.Core
 {
     //Attributed to: Adam Tegen via StackOverflow http://stackoverflow.com/questions/457316/combining-two-expressions-expressionfunct-bool
     //Modified by Ed Charbeneau
@@ -33,18 +33,21 @@ namespace PredicateExtensions
         private static Expression<Func<T, bool>> CombineLambdas<T>(this Expression<Func<T, bool>> left,
             Expression<Func<T, bool>> right, ExpressionType expressionType)
         {
-            //Remove expressions created with Begin<T>()
-            if (IsExpressionBodyConstant(left))
-                return (right);
+            if (left == null || IsExpressionBodyConstant(left))
+                return right;
 
-            var p = left.Parameters.First();
+            if (right == null)
+                return left;
+
+            var p = left.Parameters[0];
 
             var visitor = new SubstituteParameterVisitor();
-            visitor.Sub[right.Parameters.First()] = p;
+            visitor.Sub[right.Parameters[0]] = p;
 
             Expression body = Expression.MakeBinary(expressionType, left.Body, visitor.Visit(right.Body));
             return Expression.Lambda<Func<T, bool>>(body, p);
         }
+
 
         private static bool IsExpressionBodyConstant<T>(Expression<Func<T, bool>> left) =>
             left.Body.NodeType == ExpressionType.Constant;
