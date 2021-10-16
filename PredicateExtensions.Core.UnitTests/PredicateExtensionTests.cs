@@ -44,9 +44,9 @@ namespace PredicateExtensions.Core.UnitTests
         }
   
         [Fact]
-        public void Can_Begin_New_Expression()
+        public void Can_Begin_New_Expression_When_Or_Method()
         {
-            var predicate = PredicateExtensions.Begin<string>(true);
+            var predicate = PredicateExtensions.Begin<string>(false);
             Expression<Func<string, bool>> expectedOrExpression = str => (str == "A" || str.Contains("B"));
             var expectedExpression = expectedOrExpression.ToString();
 
@@ -56,7 +56,49 @@ namespace PredicateExtensions.Core.UnitTests
             resultExpression.Should().Be(expectedExpression);
             LogResults(expectedExpression, resultExpression);
         }
-  
+
+        [Fact]
+        public void Can_Begin_New_Expression_When_And_Method()
+        {
+            var predicate = PredicateExtensions.Begin<string>(true);
+            Expression<Func<string, bool>> expectedOrExpression = str => (str == "A" || str.Contains("B"));
+            var expectedExpression = expectedOrExpression.ToString();
+
+            var orExpression = predicate.And(_equalsA.Or(_containsB));
+            var resultExpression = orExpression.ToString();
+
+            resultExpression.Should().Be(expectedExpression);
+            LogResults(expectedExpression, resultExpression);
+        }
+
+        [Fact]
+        public void Cant_Begin_New_Expression_When_Or_Method()
+        {
+            var predicate = PredicateExtensions.Begin<string>(true);
+            Expression<Func<string, bool>> expectedOrExpression = str => (str == "A" || str.Contains("B"));
+            var expectedExpression = predicate.ToString();
+
+            var orExpression = predicate.Or(_equalsA.Or(_containsB));
+            var resultExpression = orExpression.ToString();
+
+            resultExpression.Should().Be(expectedExpression);
+            LogResults(expectedExpression, resultExpression);
+        }
+
+        [Fact]
+        public void Cant_Begin_New_Expression_When_And_Method()
+        {
+            var predicate = PredicateExtensions.Begin<string>(false);
+            Expression<Func<string, bool>> expectedOrExpression = str => (str == "A" || str.Contains("B"));
+            var expectedExpression = predicate.ToString();
+
+            var orExpression = predicate.And(_equalsA.Or(_containsB));
+            var resultExpression = orExpression.ToString();
+
+            resultExpression.Should().Be(expectedExpression);
+            LogResults(expectedExpression, resultExpression);
+        }
+
         [Fact]
         public void Can_Reduce_Grouped_Predicates()
         {
