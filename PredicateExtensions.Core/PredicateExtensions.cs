@@ -33,8 +33,34 @@ namespace PredicateExtensions.Core
         private static Expression<Func<T, bool>> CombineLambdas<T>(this Expression<Func<T, bool>> left,
             Expression<Func<T, bool>> right, ExpressionType expressionType)
         {
-            if (left == null || IsExpressionBodyConstant(left))
+            if (left == null)
                 return right;
+
+            if (IsExpressionBodyConstant(left))
+            {
+                if (expressionType == ExpressionType.AndAlso)
+                {
+                    if (left.Compile().Invoke(default))
+                    {
+                        return right;
+                    }
+                    else
+                    {
+                        return left;
+                    }
+                }
+                else
+                {
+                    if (left.Compile().Invoke(default))
+                    {
+                        return left;
+                    }
+                    else
+                    {
+                        return right;
+                    }
+                }
+            }
 
             if (right == null)
                 return left;
